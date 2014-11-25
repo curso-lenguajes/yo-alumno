@@ -20,6 +20,7 @@ public class ControladorUsuario {
     DAOUsuarioImpl d=new DAOUsuarioImpl();
     
    String hola= d.obtenerTodos();
+       // String hola="hola mundo";
         return hola;
     }
     

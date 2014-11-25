@@ -15,8 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonManagedReference;
@@ -43,10 +45,17 @@ public class Direccion implements Serializable {
     private String colonia;
     @Column(name = "ESTADO")
     private String estado;
-    @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO")
-    @JsonIgnore
-    @ManyToOne()
-    private Usuario idUsuario;
+    @MapsId @OneToOne
+   @JoinColumn(name="id_usuario")
+   private Usuario u;
+
+    public Direccion(String calle, Integer cp, String colonia, String estado, Usuario u) {
+        this.calle = calle;
+        this.cp = cp;
+        this.colonia = colonia;
+        this.estado = estado;
+        this.u = u;
+    }
 
     public Direccion() {
     }
@@ -95,13 +104,7 @@ public class Direccion implements Serializable {
         this.estado = estado;
     }
 
-    public Usuario getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+   
 
     @Override
     public int hashCode() {
@@ -125,7 +128,15 @@ public class Direccion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.jc.elementos.model.Direccion[ idDireccion=" + idDireccion + " ]";
+        return "co";
+    }
+
+    public Usuario getU() {
+        return u;
+    }
+
+    public void setU(Usuario u) {
+        this.u = u;
     }
     
 }
