@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jc.elementos.controller;
+package com.jc.elementos.model;
 
+import com.jc.elementos.controller.*;
 import com.jc.elementos.model.DAOUsuarioImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
