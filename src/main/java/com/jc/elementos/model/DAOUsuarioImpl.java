@@ -6,11 +6,14 @@
 package com.jc.elementos.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -20,12 +23,15 @@ public class DAOUsuarioImpl {
     
     
     public String obtenerTodos() throws Exception{
-       SessionFactory factory= HIbernateUtilidades.getSessionFactory();
+   SessionFactory factory= HIbernateUtilidades.getSessionFactory();
    Session sesion=    factory.openSession();
   Transaction tranza= sesion.beginTransaction();
  
 Criteria cri=sesion.createCriteria(Usuario.class);
+
+
 ArrayList<Usuario> usuarios= (ArrayList<Usuario>)cri.list();
+Map<String, ArrayList<Usuario>> singletonMap =Collections.singletonMap("usuario", usuarios);
 
 ObjectMapper mapper=new ObjectMapper();
 
@@ -35,7 +41,24 @@ ObjectMapper mapper=new ObjectMapper();
   tranza.commit();
   sesion.close();
   
-  return mapper.writeValueAsString(usuarios);
+  return mapper.writeValueAsString(singletonMap);
+    }
+    
+    public String obtenerUsuarioPorId(Integer id) throws Exception{
+          SessionFactory factory= HIbernateUtilidades.getSessionFactory();
+   Session sesion=    factory.openSession();
+  Transaction tranza= sesion.beginTransaction();
+ 
+Criteria cri=sesion.createCriteria(Usuario.class).add(Restrictions.idEq(id));
+
+
+Usuario u=(Usuario)cri.uniqueResult();
+
+
+ObjectMapper mapper=new ObjectMapper();
+
+
+return mapper.writeValueAsString(u);
     }
     
 }

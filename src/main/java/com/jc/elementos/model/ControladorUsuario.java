@@ -8,6 +8,7 @@ package com.jc.elementos.model;
 import com.jc.elementos.controller.*;
 import com.jc.elementos.model.DAOUsuarioImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,9 +21,17 @@ public class ControladorUsuario {
     public @ResponseBody String hola2()throws Exception{
     DAOUsuarioImpl d=new DAOUsuarioImpl();
     
-   String hola= d.obtenerTodos();
+ 
        // String hola="hola mundo";
-        return hola;
+        return d.obtenerTodos();
+    }
+    
+    
+     @RequestMapping(value="/user/{id}", method=RequestMethod.GET, headers={"Accept=Application/json"})
+    public @ResponseBody String hola3(@PathVariable Integer id)throws Exception{
+   DAOUsuarioImpl du=new DAOUsuarioImpl();
+     
+        return du.obtenerUsuarioPorId(id) ;
     }
     
 }
