@@ -39,6 +39,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>guevos.html</welcome-file>
+        <welcome-file>busqueda-estupida.html</welcome-file>
     </welcome-file-list>
 </web-app>

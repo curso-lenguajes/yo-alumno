@@ -21,13 +21,20 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <button class="btn btn-success" id="cargarDirecciones">Cargar direcciones</button>
+        <h2>Ejemplo de uso de arreglos json con tablas mysql relacionadas</h2>
+        <p>Oprime el boton y se buscará la relación de direcciones, cuya
+        dependencia directa es de la clase usuario (sin usuario no hay
+        direcciones!!!)</p>
+        <p>Aquí buscaremos el nombre (tabla usuario) del primer elemento y de dicho usuario
+            obtendremos de su direccion (tabla direccion) su campo codigo postal (cp).</p>
+        <button class="btn btn-success" id="cargarDirecciones">Buscar usuario y c.p.</button>
         <div id="resultado-direcciones"></div>
         <script>
             $(document).ready(function(){
                 $("#cargarDirecciones").click(function(){
-                    $.getJSON("http://localhost:8091/elementos-yo-alumno/servicios/usuario/1", function(datos){
-                       $("#resultado-direcciones").html("hola:"+datos.nombre);
+                    $.getJSON("http://localhost:8084/elementos-yo-alumno/servicios/direccion", function(datos){
+                       $("#resultado-direcciones").html("El codigo postal de\n\
+              "+datos.direccion[0].u.nombre +" es el "+datos.direccion[0].cp);
 
                         
                     });

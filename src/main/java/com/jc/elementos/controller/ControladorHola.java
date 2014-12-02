@@ -33,10 +33,10 @@ public class ControladorHola {
 
     
     
-    @RequestMapping(value="/hola", method=RequestMethod.GET, headers={"Accept=text/html"})
-    public @ResponseBody String hola(){
+    @RequestMapping(value="/perro", method=RequestMethod.GET, headers={"Accept=application/json"})
+    public @ResponseBody String hola()throws Exception{
     
-        return "Hola desde mi primer controller malo";
+        return GenerarUsuarios.obtenerUsuario();
     }
     
     

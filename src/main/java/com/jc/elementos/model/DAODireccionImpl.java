@@ -32,7 +32,7 @@ Criteria cri=sesion.createCriteria(Direccion.class);
 ArrayList<Direccion> usuarios= (ArrayList<Direccion>)cri.list();
 
 ObjectMapper mapper=new ObjectMapper();
-Map<String, ArrayList<Direccion>> singletonMap= Collections.singletonMap("direcciones", usuarios);
+Map<String, ArrayList<Direccion>> singletonMap= Collections.singletonMap("direccion", usuarios);
 
 
   
