@@ -26,8 +26,8 @@ and open the template in the editor.
         <script>
             $(document).ready(function(){
                 $("#cargarDirecciones").click(function(){
-                    $.getJSON("http://localhost:8091/elementos-yo-alumno/servicios/direccion", function(datos){
-                       $("#resultado-direcciones").html("hola:"+datos.direcciones[0].cp);
+                    $.getJSON("http://localhost:8091/elementos-yo-alumno/servicios/usuario/1", function(datos){
+                       $("#resultado-direcciones").html("hola:"+datos.nombre);
 
                         
                     });

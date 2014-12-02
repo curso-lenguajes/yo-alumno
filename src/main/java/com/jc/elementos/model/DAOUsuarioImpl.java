@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -37,5 +38,28 @@ ObjectMapper mapper=new ObjectMapper();
   
   return mapper.writeValueAsString(usuarios);
     }
+    
+    
+       public String obtenerPorId(Integer id) throws Exception{
+       SessionFactory factory= HIbernateUtilidades.getSessionFactory();
+   Session sesion=    factory.openSession();
+  Transaction tranza= sesion.beginTransaction();
+ 
+Criteria cri=sesion.createCriteria(Usuario.class).add(Restrictions.idEq(id));
+Usuario usuario= (Usuario)cri.uniqueResult();
+
+ObjectMapper mapper=new ObjectMapper();
+
+
+
+  
+  tranza.commit();
+  sesion.close();
+  
+  return mapper.writeValueAsString(usuario);
+    }
+       
+       
+       
     
 }

@@ -17,7 +17,7 @@ public class WebAp extends AbstractAnnotationConfigDispatcherServletInitializer 
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{WebApConfig.class, WeApHibernateConfig.class};
+        return new Class<?>[]{WebApConfig.class};
     }
 
     @Override
