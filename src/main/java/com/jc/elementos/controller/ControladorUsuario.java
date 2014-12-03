@@ -36,6 +36,17 @@ public class ControladorUsuario {
         return d.obtenerPorId(id);
     }
     
+    @RequestMapping(value="/usuario/nombre/{nombre}", method=RequestMethod.GET, headers={"Accept=Application/json"})
+    public @ResponseBody String buscarPorNOmbre(@PathVariable String nombre)throws Exception{
+    DAOUsuarioImpl d=new DAOUsuarioImpl();
+    
+   
+       // String hola="hola mundo";
+        return d.obtenerPorNOmbre(nombre);
+    }
+    
+    
+    
     
     
 }

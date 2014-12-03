@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jc.elementos.model;
+package com.jc.elementos.controller;
 
+import com.jc.elementos.model.DAODireccionImpl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
