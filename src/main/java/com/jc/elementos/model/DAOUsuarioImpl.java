@@ -93,7 +93,8 @@ ObjectMapper mapper=new ObjectMapper();
 Criteria cri=sesion.createCriteria(Usuario.class).add(Restrictions.like("nombre", nombre+"%"));
 Criteria cri2=sesion.createCriteria(Usuario.class).add(Restrictions.eq("nombre", nombre));
 Criteria cri3=sesion.createCriteria(Usuario.class).add(Restrictions.between("edad", 18,40)).addOrder(Order.asc("nombre"));
-Criteria cri4=sesion.createCriteria(Usuario.class).add(Restrictions.gt("sueldo", new Integer(4000)));
+Criteria cri4=sesion.createCriteria(Usuario.class).add(Restrictions.lt("sueldo", new Integer(4000)));
+Criteria cri5=sesion.createCriteria(Usuario.class).add(Restrictions.gt("sueldo", new Integer(4000)));
 
 
 ArrayList<Usuario> usuarios=(ArrayList<Usuario>) cri.list();
